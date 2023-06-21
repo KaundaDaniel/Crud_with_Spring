@@ -1,0 +1,7 @@
+1 criar modelo ok
+ Produto->id, nome, quantidade, valor, observação
+2-repositorio   ok
+ obter todos(get), obter por id(get), apagar(delete), cadastrar(post), editar(put),
+
+
+2- controllers- depende dos servicos- repositorios

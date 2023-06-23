@@ -3,7 +3,7 @@ package com.projecto.ola.java.model;
 public class Product {
     //Atributes starts
     private Integer id;
-    private String naame;
+    private String name;
     private Integer quantity;
     private Double valor;
     private String observation;
@@ -16,12 +16,12 @@ public class Product {
         this.id = id;
     }
 
-    public String getNaame() {
-        return naame;
+    public String getName() {
+        return name;
     }
 
-    public void setNaame(String naame) {
-        this.naame = naame;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Integer getQuantity() {

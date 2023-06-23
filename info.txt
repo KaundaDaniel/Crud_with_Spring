@@ -3,5 +3,5 @@
 2-repositorio   ok
  obter todos(get), obter por id(get), apagar(delete), cadastrar(post), editar(put),
 
-
+3-Servicos feito
 2- controllers- depende dos servicos- repositorios

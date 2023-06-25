@@ -1,18 +1,17 @@
 package com.projecto.ola.java.services;
 
 import com.projecto.ola.java.model.Product;
-import com.projecto.ola.java.repository.ProductRepository;
+import com.projecto.ola.java.repository.ProductRepositoryOld;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class ProductService {
     @Autowired
-    private ProductRepository productRepository;
+    private ProductRepositoryOld productRepository;
     /**
      * Metodo para retornar todos os produto
      * @return Lista dos produtos

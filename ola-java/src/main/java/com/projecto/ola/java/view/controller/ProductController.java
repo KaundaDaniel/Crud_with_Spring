@@ -1,4 +1,4 @@
-package com.projecto.ola.java.controller;
+package com.projecto.ola.java.view.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,7 +19,7 @@ public class ProductController {
         return productService.obterTodos();
     }
 
-    @PostMapping
+    @PostMapping("/salvar")
     public Product adicionar(@RequestBody Product product){
     return productService.adicionar(product);
     }

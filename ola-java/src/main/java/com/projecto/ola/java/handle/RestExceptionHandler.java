@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class RestExceptionHandler {
     @ExceptionHandler(ResourceNotFound.class)
     public ResponseEntity<?>handlerResourceNotFoundException(ResourceNotFound ex){
-        ErrorMensagem error=new ErrorMensagem("Not Found", HttpStatus.NOT_FOUND.value(), ex.getMessage());
+        ErrorMensagem error=new ErrorMensagem("Produto não encontrado!", HttpStatus.NOT_FOUND.value(), ex.getMessage());
         return  new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
 }

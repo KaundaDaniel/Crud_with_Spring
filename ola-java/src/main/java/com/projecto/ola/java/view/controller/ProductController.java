@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import com.projecto.ola.java.model.Product;
 import com.projecto.ola.java.services.ProductService;
 import com.projecto.ola.java.shared.ProductDto;
+import com.projecto.ola.java.view.model.ProductRequest;
 import com.projecto.ola.java.view.model.ProductResponse;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +31,12 @@ public class ProductController {
     }
 
     @PostMapping("/salvar")
-    public Product adicionar(@RequestBody Product product){
-    return productService.adicionar(product);
+    public ResponseEntity<ProductResponse> adicionar(@RequestBody ProductRequest product){
+        ModelMapper mapper= new ModelMapper();
+        ProductDto productDto = mapper.map(product, ProductDto.class);
+
+        productDto= productService.adicionar(productDto);
+        return  new ResponseEntity<>(mapper.map(productDto, ProductResponse.class), HttpStatus.CREATED);
     }
     @GetMapping("/{id}")
     public ResponseEntity <Optional<ProductResponse>>obterPorId(@PathVariable Integer id){
@@ -42,13 +47,18 @@ public class ProductController {
         );
     }
     @DeleteMapping("/{id}")
-    public String apagar(@PathVariable Integer id){
+    public ResponseEntity<?> apagar(@PathVariable Integer id){
          productService.apagar(id);
-         return "Produto apagado com sucecso " + id;
+         return new ResponseEntity<>(HttpStatus.NO_CONTENT) ;
     }
     @PutMapping("/{id}")
-    public Product actualizarProduct(@RequestBody Product product, @PathVariable Integer id){
-        return productService.actualizar(product, id);
+    public ResponseEntity<ProductResponse> actualizarProduct(@RequestBody ProductRequest product, @PathVariable Integer id){
+        ModelMapper mapper=new ModelMapper();
+        ProductDto productDto= mapper.map(product, ProductDto.class);
+        productDto= productService.actualizar(productDto, id);
+        return new ResponseEntity<>(
+                mapper.map(productDto, ProductResponse.class), HttpStatus.OK
+        );
 
     }
 
